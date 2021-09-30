@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.20/dist/css/uikit.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'NaidaApp/css/base.css' %}">
+  
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"></script>
+    <title>X Files</title>
+</head>
+<body>
+  <style>
+    #hello-msg{
+      font-size: 18px;
+      color:#fff;
+      margin-right: 20px;
+    }
+  </style>
+  <div > 
+    <nav class="navbar navbar-expand-lg navbar fixed-top" style="background-image: url('https://media.istockphoto.com/photos/watercolor-textured-background-picture-id887755698?k=6&m=887755698&s=612x612&w=0&h=_yEUF8gLpWjZv5IgwuWkecNVt4X4P7vpuFBKCWIuR44=');">
+      <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Den%C3%ADk_Sport_logo.svg/800px-Den%C3%ADk_Sport_logo.svg.png" style="width: 100px;">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Эхлэл</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'sags' %}">Сагсанбөмбөг</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'foot' %}">Хөлбөмбөг</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  href="{%url 'chess' %}">Шатар</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'esport' %}">Esport</a>
+            </li>
+          </ul>
+          
+        </div>
+       
+      </div>
+    </nav>
+    <br> <br> <br> <br>
+      <div class="container"><br>
+ 
+  
+        {% if esports %}
+        {% for esport in esports %}
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+          <h6 class="border-bottom pb-2 mb-0"> {{ esport.name }}</h6>
+          
+          
+           
+          
+     
+          <div class="d-flex text-muted pt-4">
+            <img src="{{esport.image.url}}" style="width:40%; ">
+      
+            <p class="pb-3 mb-0 small lh-sm border-bottom">
+              <strong class="d-block text-gray-dark" style="padding-left: 20px; text-align: justify;">{{ esport.desc }}</strong>
+              <small class="text-muted" style="padding-left: 20px;"><a>{{ esport.date }}</a></small>
+              
+              
+            </p>
+            
+          </div>
+          
+        
+        </div>
+        {% endfor %}
+      
+        {% else %}
+        
+        {% endif %}
+      </div>
+      <br><br><br>
+      <footer class="bg-info text-center text-white">
+ 
+        <div class="container p-4 pb-0">
+       
+          <section class="mb-4">
+         
+            <a class="btn btn-outline-light btn-floating m-1" href="https://web.facebook.com/?_rdc=1&_rdr" role="button"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+      
+           
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="fab fa-twitter"></i
+            ></a>
+      
+           
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="fab fa-google"></i
+            ></a>
+      
+         
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" role="button"
+              ><i class="fab fa-instagram"></i
+            ></a>
+      
+            <form class="d-flex" >
+      
+              <span id="hello-msg" style="padding-top: 5px;"><i class="fas fa-user-graduate"></i> {{request.user}}</span>
+              <span><a  class="btn btn-info" href="{% url 'logout' %}" style="text-decoration: none; color: white;">Logout</a></span>
+            </form>
+           
+          </section>
+          <div class="fb-comments" data-href="http://127.0.0.1:8000/chess" data-width="" data-numposts="2" ></div>
+        </div>
+       
+       
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2021
+          <a class="text-white" href="#">Naida</a>
+      
+        </div>
+      
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.20/dist/js/uikit.min.js"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.20/dist/js/uikit-icons.min.js"></script>
+      <script src="https://kit.fontawesome.com/cfe93574ad.js" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+      </script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
+      </script> 
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+      </script>
+</body>
+</html>
