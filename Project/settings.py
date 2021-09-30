@@ -23,9 +23,9 @@ STAT =os.path.join(BASE_DIR, 'static')
 SECRET_KEY = 'j9$ow5072pnkv^7kg!7)32sa@6c!_&z$d#h+863-pqh1z7y1*x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','onemanwork.herokuapp.com']
 
 
 # Application definition
